@@ -93,7 +93,7 @@ function App() {
     const stars = []
     for (let i = 1; i <= 5; i++) {
       stars.push(
-        <span key={i} className={i <= rating ? "text-yellow-400" : "text-gray-300"}>
+        <span key={i} className={i <= rating ? "star star-filled" : "star star-empty"}>
           ★
         </span>
       )
@@ -102,122 +102,120 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+    <div className="app-container">
       {/* Header */}
-      <header className="bg-white bg-opacity-10 backdrop-blur-lg border-b border-white border-opacity-20">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-bold text-white">AR Compare</h1>
-            <nav className="hidden md:flex space-x-6">
-              <a href="#" className="text-white text-opacity-80 hover:text-white">Products</a>
-              <a href="#" className="text-white text-opacity-80 hover:text-white">Brands</a>
-              <a href="#" className="text-white text-opacity-80 hover:text-white">Reviews</a>
-              <a href="#" className="text-white text-opacity-80 hover:text-white">News</a>
-            </nav>
-          </div>
+      <header className="header">
+        <div className="header-container">
+          <h1 className="header-title">AR Compare</h1>
+          <nav className="nav">
+            <a href="#">Products</a>
+            <a href="#">Brands</a>
+            <a href="#">Reviews</a>
+            <a href="#">News</a>
+          </nav>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 px-4 text-center">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+      <section className="hero">
+        <div className="hero-container">
+          <h1 className="hero-title">
             The Ultimate AR & AI Glasses Comparison
           </h1>
-          <p className="text-xl text-white text-opacity-80 mb-8">
+          <p className="hero-subtitle">
             Compare specs, features, and prices of the latest AR glasses from top manufacturers. 
             Make informed decisions with our comprehensive database.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold">
+          <div className="hero-buttons">
+            <button className="btn btn-primary">
               Start Comparing
             </button>
-            <button className="border border-white border-opacity-20 text-white hover:bg-white hover:bg-opacity-10 px-8 py-3 rounded-lg font-semibold">
+            <button className="btn btn-outline">
               View All Products
             </button>
           </div>
           
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 max-w-md mx-auto">
-            <div>
-              <div className="text-3xl font-bold text-white">4+</div>
-              <div className="text-white text-opacity-60">Brands</div>
+          <div className="stats">
+            <div className="stat">
+              <div className="stat-number">4+</div>
+              <div className="stat-label">Brands</div>
             </div>
-            <div>
-              <div className="text-3xl font-bold text-white">6+</div>
-              <div className="text-white text-opacity-60">Products</div>
+            <div className="stat">
+              <div className="stat-number">6+</div>
+              <div className="stat-label">Products</div>
             </div>
-            <div>
-              <div className="text-3xl font-bold text-white">Daily</div>
-              <div className="text-white text-opacity-60">Updates</div>
+            <div className="stat">
+              <div className="stat-number">Daily</div>
+              <div className="stat-label">Updates</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Products Section */}
-      <section className="py-16 px-4">
-        <div className="max-w-7xl mx-auto">
+      <section className="products-section">
+        <div className="products-container">
           {/* Search */}
-          <div className="mb-8 max-w-md mx-auto">
+          <div className="search-container">
             <input
               type="text"
               placeholder="Search AR glasses..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full px-4 py-3 rounded-lg bg-white bg-opacity-10 border border-white border-opacity-20 text-white placeholder-white placeholder-opacity-60 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="search-input"
             />
           </div>
 
-          <h2 className="text-2xl font-bold text-white mb-6">{filteredProducts.length} Products Found</h2>
+          <h2 className="section-title">{filteredProducts.length} Products Found</h2>
           
           {/* Products Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="products-grid">
             {filteredProducts.map(product => (
-              <div key={product.id} className="bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl p-6 border border-white border-opacity-20 hover:bg-opacity-20 transition-all">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="text-4xl">👓</div>
+              <div key={product.id} className="product-card">
+                <div className="product-header">
+                  <div className="product-icon">👓</div>
                 </div>
                 
-                <h3 className="text-xl font-bold text-white mb-2">{product.name}</h3>
-                <p className="text-white text-opacity-80 mb-3">{product.description}</p>
-                <div className="text-2xl font-bold text-blue-400 mb-4">{product.price}</div>
+                <h3 className="product-title">{product.name}</h3>
+                <p className="product-description">{product.description}</p>
+                <div className="product-price">{product.price}</div>
                 
                 {/* Rating */}
-                <div className="flex items-center gap-2 mb-4">
+                <div className="rating">
                   {product.rating > 0 ? (
                     <>
-                      <div className="flex">{renderStars(product.rating)}</div>
-                      <span className="text-white font-semibold">{product.rating}</span>
-                      <span className="text-white text-opacity-60">({product.reviews} reviews)</span>
+                      <div className="stars">{renderStars(product.rating)}</div>
+                      <span className="rating-text">{product.rating}</span>
+                      <span className="rating-reviews">({product.reviews} reviews)</span>
                     </>
                   ) : (
-                    <span className="text-white text-opacity-60">No rating yet ({product.reviews} reviews)</span>
+                    <span className="rating-reviews">No rating yet ({product.reviews} reviews)</span>
                   )}
                 </div>
                 
                 {/* Specs */}
-                <div className="grid grid-cols-2 gap-2 text-sm mb-4">
-                  <div className="text-white text-opacity-80">
+                <div className="specs-grid">
+                  <div className="spec-item">
                     👁️ {product.fieldOfView}
                   </div>
-                  <div className="text-white text-opacity-80">
+                  <div className="spec-item">
                     ⚡ {product.brightness}
                   </div>
-                  <div className="text-white text-opacity-80">
+                  <div className="spec-item">
                     🔊 {product.audio}
                   </div>
-                  <div className="text-white text-opacity-80">
+                  <div className="spec-item">
                     ⚖️ {product.weight}
                   </div>
                 </div>
                 
                 {/* Actions */}
-                <div className="flex gap-2">
-                  <button className="flex-1 bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg text-sm font-semibold">
+                <div className="product-actions">
+                  <button className="action-btn action-btn-compare">
                     +Compare
                   </button>
-                  <button className="flex-1 border border-white border-opacity-20 text-white hover:bg-white hover:bg-opacity-10 py-2 px-4 rounded-lg text-sm font-semibold">
+                  <button className="action-btn action-btn-details">
                     View Details
                   </button>
                 </div>
