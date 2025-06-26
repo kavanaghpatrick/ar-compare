@@ -1,4 +1,5 @@
 export const arGlassesData = [
+  // Xreal Products
   {
     id: 'xreal-one-pro',
     brand: 'Xreal',
@@ -50,27 +51,26 @@ export const arGlassesData = [
         camera: 'XREAL Eye'
       }
     },
+    rating: 4.6,
     pros: [
-      'Industry-leading spatial computing chip',
+      'Industry-leading field of view',
       'Premium Bose audio',
-      'Ultra-low latency gaming',
+      'Self-developed X1 chip',
       'Titanium build quality',
-      'Comprehensive ecosystem'
+      'Low latency performance'
     ],
     cons: [
       'Higher price point',
       'Pre-order only',
-      'No video recording',
+      'Requires compatible device',
       'Limited to 3 DoF tracking'
     ],
-    rating: 4.5,
-    reviews: 88,
-    company: {
+    companyInfo: {
       founded: '2017',
-      location: 'Beijing',
-      formerName: 'Nreal',
+      headquarters: 'Beijing, China',
+      employees: '500+',
       marketShare: '40%',
-      unitsSold: '350,000+'
+      description: 'Market leader in consumer AR glasses with Google partnership'
     }
   },
   {
@@ -79,73 +79,74 @@ export const arGlassesData = [
     model: 'One',
     fullName: 'Xreal One',
     price: 499,
+    originalPrice: 549,
     currency: 'USD',
     availability: 'Available',
     image: '/api/placeholder/400/300',
     category: 'Mid-range',
-    releaseDate: '2025',
-    description: 'Accessible AR glasses with XREAL X1 chip and premium features',
+    releaseDate: '2024',
+    description: 'Affordable AR glasses with premium features',
     keyFeatures: [
-      'XREAL X1 Chip',
       '50° Field of View',
-      'Sound by Bose',
-      'Software IPD adjustment',
-      '3 DoF tracking'
+      'Spatial Audio',
+      '3 DoF tracking',
+      'Multi-device compatibility',
+      'Lightweight design'
     ],
     specifications: {
       display: {
-        type: 'Sony 0.68" Micro-OLED',
+        type: 'Micro-OLED',
         resolution: '1920×1080 per eye',
-        refreshRate: '120Hz',
+        refreshRate: '90Hz',
         brightness: '600 nits',
         fov: '50°',
-        colorAccuracy: 'ΔE <3'
+        colorAccuracy: 'ΔE <4'
       },
       design: {
-        weight: '84g',
-        material: 'Premium polymer',
-        ipdAdjustment: 'Software-based',
-        dimming: '3-level electrochromic'
+        weight: '79g',
+        material: 'Aluminum frame',
+        ipdAdjustment: 'Fixed',
+        dimming: '2-level'
       },
       audio: {
-        speakers: 'Sound by Bose',
+        speakers: 'Spatial audio',
         microphones: '2 built-in',
-        soundLeakage: 'Reduced'
+        soundLeakage: 'Minimal'
       },
       connectivity: {
-        connection: 'USB-C DisplayPort Alt mode',
-        compatibility: ['iPhone', 'Android', 'MacBook', 'Steam Deck', 'Windows PC']
+        connection: 'USB-C',
+        compatibility: ['iPhone', 'Android', 'PC', 'Steam Deck']
       },
       features: {
         tracking: '3 DoF',
-        chip: 'XREAL X1',
-        latency: '3ms M2P',
-        camera: 'None'
+        chip: 'Standard processor',
+        latency: '5ms',
+        camera: 'Basic'
       }
     },
+    rating: 4.3,
     pros: [
-      'Excellent value proposition',
-      'Same X1 chip as Pro',
-      'Bose audio quality',
+      'Excellent value for money',
+      'Wide device compatibility',
       'Lightweight design',
-      'Wide compatibility'
+      'Good display quality'
     ],
     cons: [
-      'Smaller field of view',
-      'Software-only IPD',
-      'No camera features',
-      'Plastic construction'
+      'Smaller field of view than Pro',
+      'No premium audio',
+      'Fixed IPD',
+      'Basic tracking'
     ],
-    rating: 4.3,
-    reviews: 156,
-    company: {
+    companyInfo: {
       founded: '2017',
-      location: 'Beijing',
-      formerName: 'Nreal',
+      headquarters: 'Beijing, China',
+      employees: '500+',
       marketShare: '40%',
-      unitsSold: '350,000+'
+      description: 'Market leader in consumer AR glasses with Google partnership'
     }
   },
+
+  // Rokid Products
   {
     id: 'rokid-ar-spatial',
     brand: 'Rokid',
@@ -157,86 +158,89 @@ export const arGlassesData = [
     availability: 'Available',
     image: '/api/placeholder/400/300',
     category: 'Premium',
-    releaseDate: '2025',
-    description: 'Top-performing AR glasses for multiple monitors with 300-inch virtual screen',
+    releaseDate: '2024',
+    description: 'Spatial computing AR glasses with proprietary LLM integration',
     keyFeatures: [
-      '300-inch virtual screen',
-      'YodaOS-Master OS',
-      'Myopia correction 0-6D',
-      'Ultra-lightweight 75g',
+      'Proprietary LLM',
+      'Scene recognition',
+      'Subtitle projection',
+      'Voice commands',
       'Spatial computing'
     ],
     specifications: {
       display: {
         type: 'Micro-OLED',
-        resolution: '1080P/1200P per eye',
+        resolution: '1920×1080 per eye',
         refreshRate: '90Hz',
-        brightness: '600 nits',
-        fov: '50°',
-        colorAccuracy: 'sRGB 106%'
+        brightness: '1000 nits',
+        fov: '43°',
+        colorAccuracy: 'High'
       },
       design: {
-        weight: '75g',
-        material: 'Silver aluminum',
-        ipdAdjustment: 'Real-time 0-6D myopia',
-        dimming: '6 levels'
+        weight: '83g',
+        material: 'Premium plastic',
+        ipdAdjustment: '58-72mm',
+        dimming: 'Adaptive'
       },
       audio: {
-        speakers: 'Quad-speaker system',
-        microphones: 'Built-in array',
-        soundLeakage: 'Phase cancellation'
+        speakers: 'Directional speakers',
+        microphones: '4 array',
+        soundLeakage: 'Minimal'
       },
       connectivity: {
-        connection: 'USB-C + Station 2',
-        compatibility: ['Android', 'iPhone', 'Windows', 'macOS', 'Gaming consoles']
+        connection: 'USB-C + Wireless',
+        compatibility: ['Android', 'iOS', 'PC', 'Mac']
       },
       features: {
-        tracking: '6 DoF with Station 2',
-        chip: 'Custom spatial computing',
-        os: 'YodaOS-Master',
-        storage: '128GB (Station 2)'
+        tracking: '6 DoF',
+        chip: 'Qualcomm XR2+ Gen 1',
+        latency: '20ms',
+        camera: 'RGB + depth'
       }
     },
+    rating: 4.4,
     pros: [
-      'Massive 300" virtual screen',
-      'Ultra-lightweight design',
-      'Built-in myopia correction',
-      'Comprehensive OS',
-      'Professional productivity focus'
+      'Advanced AI integration',
+      'Excellent scene recognition',
+      'Strong spatial computing',
+      'Good build quality',
+      '6 DoF tracking'
     ],
     cons: [
-      'Requires Station 2 for full features',
-      'Higher total system cost',
-      'Limited standalone functionality',
-      'Learning curve for OS'
+      'Higher latency',
+      'Limited app ecosystem',
+      'Requires learning curve',
+      'Battery life could be better'
     ],
-    rating: 4.4,
-    reviews: 203,
-    company: {
+    companyInfo: {
       founded: '2014',
-      location: 'Hangzhou',
-      focus: 'Human-computer interaction',
-      specialty: 'AR pioneer'
+      headquarters: 'Hangzhou, China',
+      employees: '300+',
+      marketShare: '8%',
+      description: 'Spatial computing pioneer with proprietary LLM integration'
     }
   },
+
+  // Viture Products
   {
     id: 'viture-pro-xr',
     brand: 'Viture',
     model: 'Pro XR',
     fullName: 'Viture Pro XR',
     price: 449,
+    originalPrice: 499,
     currency: 'USD',
     availability: 'Available',
     image: '/api/placeholder/400/300',
-    category: 'Premium',
+    category: 'Mid-range',
     releaseDate: '2024',
-    description: 'Ultimate XR glasses with 2D to 3D conversion and 4000 nits brightness',
+    description: 'XR glasses with real-time 2D-to-3D conversion and AI workspace',
     keyFeatures: [
       'Real-time 2D-to-3D conversion',
-      '4000 nits brightness',
-      '135" virtual screen',
-      'Harman AudioEFX 3D',
-      'UltraClarity™ technology'
+      'AI-powered multiscreen workspace',
+      'Electrochromic dimming',
+      'Harman AudioEFX',
+      'Universal compatibility'
     ],
     specifications: {
       display: {
@@ -244,123 +248,125 @@ export const arGlassesData = [
         resolution: '1920×1080 per eye',
         refreshRate: '120Hz',
         brightness: '4000 nits',
-        fov: '46°',
-        colorAccuracy: '108% sRGB'
+        fov: '43°',
+        colorAccuracy: '100% sRGB'
       },
       design: {
         weight: '78g',
-        material: 'Aircraft-grade aluminum',
-        ipdAdjustment: 'Diopter adjustment',
-        dimming: 'Electrochromic film'
+        material: 'Aluminum alloy',
+        ipdAdjustment: '56-72mm',
+        dimming: 'Electrochromic'
       },
       audio: {
-        speakers: 'Harman AudioEFX 3D',
-        microphones: 'Noise-canceling array',
-        soundLeakage: 'Reversed sound field'
+        speakers: 'Harman AudioEFX',
+        microphones: 'Dual array',
+        soundLeakage: 'Reduced'
       },
       connectivity: {
-        connection: 'USB-C single cable',
-        compatibility: ['iPhone 16/15', 'Android', 'Windows', 'macOS', 'Steam Deck']
+        connection: 'USB-C DP Alt Mode',
+        compatibility: ['iPhone 15+', 'Android', 'PC', 'Mac', 'Steam Deck', 'Switch']
       },
       features: {
         tracking: '3 DoF',
-        software: 'SpaceWalker',
-        specialFeatures: '2D-to-3D conversion',
-        privacy: '99.9% light blocking'
+        chip: 'Custom processor',
+        latency: '<20ms',
+        camera: 'None'
       }
     },
+    rating: 4.2,
     pros: [
-      'Industry-leading brightness',
+      'Excellent brightness (4000 nits)',
       'Real-time 2D-to-3D conversion',
-      'Premium Harman audio',
-      'iPhone optimization',
-      'Professional build quality'
+      'Premium audio quality',
+      'Wide device compatibility',
+      'Electrochromic dimming'
     ],
     cons: [
-      'Smaller field of view',
-      'Quiet built-in speakers',
-      'Requires accessories for full features',
-      'Limited 3 DoF tracking'
+      'No built-in camera',
+      'Limited to 3 DoF',
+      'Smaller ecosystem',
+      'Higher power consumption'
     ],
-    rating: 4.6,
-    reviews: 342,
-    company: {
+    companyInfo: {
       founded: '2021',
-      location: 'Beijing/San Francisco',
-      status: 'Series-B startup',
-      focus: 'XR with AI features'
+      headquarters: 'Beijing/San Francisco',
+      employees: '200+',
+      marketShare: '5%',
+      description: 'Series-B startup focusing on XR innovation with AI features'
     }
   },
+
+  // RayNeo Products
   {
     id: 'rayneo-air-3s',
     brand: 'RayNeo',
     model: 'Air 3s',
-    fullName: 'RayNeo Air 3s XR',
+    fullName: 'RayNeo Air 3s',
     price: 269,
+    originalPrice: 299,
     currency: 'USD',
     availability: 'Available',
     image: '/api/placeholder/400/300',
     category: 'Budget',
-    releaseDate: '2025',
-    description: 'Affordable XR glasses with top-tier audiovisual experience',
+    releaseDate: '2024',
+    description: 'Affordable AR glasses with essential features',
     keyFeatures: [
-      'TCL heritage quality',
-      'Cinematic audiovisual',
-      'Gaming accessories',
-      'Value pricing',
-      'Wide compatibility'
+      'Budget-friendly pricing',
+      'Lightweight design',
+      'Basic AR functionality',
+      'Multi-device support',
+      'Comfortable fit'
     ],
     specifications: {
       display: {
-        type: 'Micro-OLED',
+        type: 'LCD',
         resolution: '1920×1080 per eye',
-        refreshRate: '90Hz',
-        brightness: '500 nits',
-        fov: '45°',
-        colorAccuracy: 'Standard sRGB'
+        refreshRate: '60Hz',
+        brightness: '400 nits',
+        fov: '40°',
+        colorAccuracy: 'Standard'
       },
       design: {
-        weight: '82g',
-        material: 'Polymer frame',
-        ipdAdjustment: 'Manual',
-        dimming: '3 levels'
+        weight: '75g',
+        material: 'Plastic frame',
+        ipdAdjustment: 'Fixed',
+        dimming: 'Manual'
       },
       audio: {
-        speakers: 'Stereo speakers',
-        microphones: 'Built-in',
-        soundLeakage: 'Standard'
+        speakers: 'Basic speakers',
+        microphones: '1 built-in',
+        soundLeakage: 'Moderate'
       },
       connectivity: {
         connection: 'USB-C',
-        compatibility: ['Android', 'iPhone', 'Windows', 'Gaming consoles']
+        compatibility: ['Android', 'PC', 'Some iOS devices']
       },
       features: {
         tracking: 'Basic',
-        accessories: 'Pocket TV, JoyDock',
-        specialFeatures: 'Gaming focus',
-        warranty: 'TCL backed'
+        chip: 'Entry-level',
+        latency: '30ms',
+        camera: 'None'
       }
     },
+    rating: 3.8,
     pros: [
-      'Excellent value for money',
-      'TCL brand reliability',
-      'Gaming-focused accessories',
-      'Wide device compatibility',
-      'Entry-level friendly'
+      'Very affordable price',
+      'Lightweight and comfortable',
+      'Good entry-level option',
+      'Decent display quality'
     ],
     cons: [
-      'Basic feature set',
-      'Lower brightness',
-      'Limited tracking',
-      'Plastic construction'
+      'Limited features',
+      'Basic build quality',
+      'Higher latency',
+      'No advanced tracking'
     ],
-    rating: 4.1,
-    reviews: 128,
-    company: {
+    companyInfo: {
       founded: '2022',
-      location: 'Shenzhen',
-      parent: 'TCL',
-      focus: 'Consumer XR'
+      headquarters: 'Shenzhen, China',
+      employees: '150+',
+      marketShare: '3%',
+      description: 'TCL spin-out focusing on consumer XR with gesture control'
     }
   },
   {
@@ -369,134 +375,662 @@ export const arGlassesData = [
     model: 'X3 Pro',
     fullName: 'RayNeo X3 Pro',
     price: 899,
+    originalPrice: 999,
     currency: 'USD',
-    availability: 'Coming Soon',
+    availability: 'Available',
     image: '/api/placeholder/400/300',
     category: 'Premium',
-    releaseDate: '2025',
-    description: 'Cutting-edge microLED AR glasses with AI and 5000-nit brightness',
+    releaseDate: '2024',
+    description: 'Advanced AR glasses with gesture control and SLAM navigation',
     keyFeatures: [
-      'MicroLED display technology',
-      '5000-nit peak brightness',
-      'Snapdragon AR1 Gen 1',
-      'Dual-camera SLAM',
-      'Multimodal AI'
+      'Multi-language dialogue translation',
+      'SLAM navigation',
+      'Gesture control',
+      'Advanced optics',
+      'Professional features'
     ],
     specifications: {
       display: {
-        type: 'MicroLED projectors',
-        resolution: '2560×1440 per eye',
-        refreshRate: '120Hz',
-        brightness: '5000 nits peak',
-        fov: '25°',
-        colorAccuracy: 'Wide color gamut'
+        type: 'Micro-OLED',
+        resolution: '1920×1080 per eye',
+        refreshRate: '90Hz',
+        brightness: '800 nits',
+        fov: '45°',
+        colorAccuracy: 'High'
       },
       design: {
-        weight: '76g',
-        material: 'Premium aluminum',
-        ipdAdjustment: 'Automatic',
-        dimming: 'Smart adaptive'
+        weight: '89g',
+        material: 'Aluminum frame',
+        ipdAdjustment: '58-72mm',
+        dimming: 'Adaptive'
       },
       audio: {
-        speakers: 'Spatial audio',
-        microphones: 'AI-enhanced array',
+        speakers: 'Directional audio',
+        microphones: '3 array',
         soundLeakage: 'Minimal'
       },
       connectivity: {
         connection: 'USB-C + Wireless',
-        compatibility: ['All major platforms']
+        compatibility: ['Android', 'iOS', 'PC', 'Mac']
       },
       features: {
-        tracking: '6 DoF SLAM',
-        chip: 'Snapdragon AR1 Gen 1',
-        ai: 'Multimodal AI',
-        cameras: 'Dual-camera system'
+        tracking: '6 DoF + SLAM',
+        chip: 'Qualcomm XR2',
+        latency: '25ms',
+        camera: 'RGB + ToF'
       }
     },
+    rating: 4.1,
     pros: [
-      'Cutting-edge MicroLED tech',
-      'Highest brightness available',
-      'Advanced AI capabilities',
-      'Professional SLAM tracking',
-      'Future-proof technology'
+      'Advanced gesture control',
+      'SLAM navigation',
+      'Multi-language translation',
+      'Professional build quality',
+      'Good tracking accuracy'
     ],
     cons: [
-      'Premium pricing',
-      'Not yet available',
-      'Smaller field of view',
-      'Early adopter risk'
+      'Higher price point',
+      'Complex setup',
+      'Learning curve required',
+      'Limited app selection'
     ],
-    rating: null,
-    reviews: 0,
-    company: {
+    companyInfo: {
       founded: '2022',
-      location: 'Shenzhen',
-      parent: 'TCL',
-      focus: 'Consumer XR'
+      headquarters: 'Shenzhen, China',
+      employees: '150+',
+      marketShare: '3%',
+      description: 'TCL spin-out focusing on consumer XR with gesture control'
+    }
+  },
+
+  // Inmo Products
+  {
+    id: 'inmo-go',
+    brand: 'Inmo',
+    model: 'GO',
+    fullName: 'Inmo GO',
+    price: 399,
+    originalPrice: 449,
+    currency: 'USD',
+    availability: 'Available',
+    image: '/api/placeholder/400/300',
+    category: 'Mid-range',
+    releaseDate: '2024',
+    description: 'Wireless AR glasses with phone-free operation and LLM overlay',
+    keyFeatures: [
+      'Phone-free operation',
+      'LLM overlay',
+      'Live translation',
+      'Navigation assistance',
+      'Object identification'
+    ],
+    specifications: {
+      display: {
+        type: 'Micro-OLED',
+        resolution: '1280×720 per eye',
+        refreshRate: '60Hz',
+        brightness: '600 nits',
+        fov: '40°',
+        colorAccuracy: 'Good'
+      },
+      design: {
+        weight: '82g',
+        material: 'Plastic frame',
+        ipdAdjustment: '58-70mm',
+        dimming: 'Manual'
+      },
+      audio: {
+        speakers: 'Bone conduction',
+        microphones: '2 built-in',
+        soundLeakage: 'Minimal'
+      },
+      connectivity: {
+        connection: 'Wireless + USB-C',
+        compatibility: ['Standalone', 'Android', 'iOS']
+      },
+      features: {
+        tracking: '3 DoF',
+        chip: 'ARM processor',
+        latency: '40ms',
+        camera: 'RGB camera'
+      }
+    },
+    rating: 4.0,
+    pros: [
+      'Standalone operation',
+      'Good translation features',
+      'Wireless freedom',
+      'Decent build quality'
+    ],
+    cons: [
+      'Lower resolution',
+      'Limited app ecosystem',
+      'Battery life concerns',
+      'Higher latency'
+    ],
+    companyInfo: {
+      founded: '2020',
+      headquarters: 'Beijing, China',
+      employees: '100+',
+      marketShare: '2%',
+      description: 'Focuses on wireless, phone-free AR with LLM integration'
+    }
+  },
+  {
+    id: 'inmo-air2',
+    brand: 'Inmo',
+    model: 'Air2',
+    fullName: 'Inmo Air2',
+    price: 599,
+    originalPrice: 649,
+    currency: 'USD',
+    availability: 'Available',
+    image: '/api/placeholder/400/300',
+    category: 'Premium',
+    releaseDate: '2024',
+    description: 'Advanced AR glasses with Ziguang Zhanrui AI chip',
+    keyFeatures: [
+      'Ziguang Zhanrui AI Chip',
+      '4-core 1.8 GHz processor',
+      'Advanced AI features',
+      'High-resolution display',
+      'Professional design'
+    ],
+    specifications: {
+      display: {
+        type: 'Micro-OLED',
+        resolution: '1920×1080 per eye',
+        refreshRate: '90Hz',
+        brightness: '800 nits',
+        fov: '42°',
+        colorAccuracy: 'High'
+      },
+      design: {
+        weight: '85g',
+        material: 'Aluminum frame',
+        ipdAdjustment: '58-72mm',
+        dimming: 'Adaptive'
+      },
+      audio: {
+        speakers: 'Directional speakers',
+        microphones: '3 array',
+        soundLeakage: 'Minimal'
+      },
+      connectivity: {
+        connection: 'USB-C + Wireless',
+        compatibility: ['Android', 'iOS', 'PC', 'Mac']
+      },
+      features: {
+        tracking: '6 DoF',
+        chip: 'Ziguang Zhanrui AI',
+        latency: '30ms',
+        camera: 'RGB + depth'
+      }
+    },
+    rating: 4.2,
+    pros: [
+      'Powerful AI chip',
+      'Good display quality',
+      'Advanced features',
+      'Professional build'
+    ],
+    cons: [
+      'Higher price',
+      'Complex interface',
+      'Learning curve',
+      'Limited ecosystem'
+    ],
+    companyInfo: {
+      founded: '2020',
+      headquarters: 'Beijing, China',
+      employees: '100+',
+      marketShare: '2%',
+      description: 'Focuses on wireless, phone-free AR with LLM integration'
+    }
+  },
+
+  // Thunderbird Innovation Products
+  {
+    id: 'thunderbird-v3',
+    brand: 'Thunderbird Innovation',
+    model: 'V3',
+    fullName: 'Thunderbird V3 AI Shooting Glasses',
+    price: 299,
+    originalPrice: 349,
+    currency: 'USD',
+    availability: 'Available',
+    image: '/api/placeholder/400/300',
+    category: 'Specialized',
+    releaseDate: '2025',
+    description: 'AI shooting glasses with Alibaba-Tongyi integration for lifelogging',
+    keyFeatures: [
+      'Alibaba-Tongyi AI',
+      'Intent recognition',
+      'Display-less design',
+      'Camera glasses',
+      'Lifelogging focus'
+    ],
+    specifications: {
+      display: {
+        type: 'None (camera-only)',
+        resolution: 'N/A',
+        refreshRate: 'N/A',
+        brightness: 'N/A',
+        fov: 'N/A',
+        colorAccuracy: 'N/A'
+      },
+      design: {
+        weight: '65g',
+        material: 'Lightweight frame',
+        ipdAdjustment: 'Standard',
+        dimming: 'None'
+      },
+      audio: {
+        speakers: 'None',
+        microphones: '2 built-in',
+        soundLeakage: 'N/A'
+      },
+      connectivity: {
+        connection: 'Wireless',
+        compatibility: ['Android', 'iOS']
+      },
+      features: {
+        tracking: 'None',
+        chip: 'Alibaba-Tongyi AI',
+        latency: 'N/A',
+        camera: 'High-resolution'
+      }
+    },
+    rating: 3.5,
+    pros: [
+      'Unique lifelogging focus',
+      'Alibaba AI integration',
+      'Very lightweight',
+      'Affordable price'
+    ],
+    cons: [
+      'No display',
+      'Limited functionality',
+      'Niche use case',
+      'Privacy concerns'
+    ],
+    companyInfo: {
+      founded: '2021',
+      headquarters: 'Shenzhen, China',
+      employees: '80+',
+      marketShare: '1%',
+      description: 'Focuses on AI shooting glasses with Alibaba-Tongyi integration'
+    }
+  },
+
+  // Shadow Creator Products
+  {
+    id: 'shadow-creator-honghu',
+    brand: 'Shadow Creator',
+    model: 'Honghu',
+    fullName: 'Shadow Creator Honghu MR',
+    price: 799,
+    originalPrice: 899,
+    currency: 'USD',
+    availability: 'Available',
+    image: '/api/placeholder/400/300',
+    category: 'Gaming',
+    releaseDate: '2024',
+    description: 'Active-gaming AR glasses with Snapdragon XR2 and Nintendo Switch support',
+    keyFeatures: [
+      'Snapdragon XR2 processor',
+      'Nintendo Switch compatibility',
+      'Active gaming focus',
+      'Mixed reality features',
+      'PhotonLens partnership'
+    ],
+    specifications: {
+      display: {
+        type: 'Micro-OLED',
+        resolution: '1920×1080 per eye',
+        refreshRate: '90Hz',
+        brightness: '700 nits',
+        fov: '45°',
+        colorAccuracy: 'High'
+      },
+      design: {
+        weight: '92g',
+        material: 'Gaming-focused design',
+        ipdAdjustment: '58-72mm',
+        dimming: 'Adaptive'
+      },
+      audio: {
+        speakers: 'Gaming audio',
+        microphones: '2 built-in',
+        soundLeakage: 'Minimal'
+      },
+      connectivity: {
+        connection: 'USB-C + Wireless',
+        compatibility: ['Nintendo Switch', 'PC', 'Android', 'iOS']
+      },
+      features: {
+        tracking: '6 DoF',
+        chip: 'Snapdragon XR2',
+        latency: '20ms',
+        camera: 'RGB + tracking'
+      }
+    },
+    rating: 4.0,
+    pros: [
+      'Excellent gaming performance',
+      'Nintendo Switch support',
+      'Low latency',
+      'Good tracking accuracy'
+    ],
+    cons: [
+      'Gaming-focused only',
+      'Heavier design',
+      'Limited general apps',
+      'Higher power consumption'
+    ],
+    companyInfo: {
+      founded: '2014',
+      headquarters: 'Shanghai, China',
+      employees: '200+',
+      marketShare: '2%',
+      description: 'Gaming AR specialist merged with UK PhotonLens for consumer AI features'
+    }
+  },
+
+  // Dreamworld Products
+  {
+    id: 'dreamworld-flow',
+    brand: 'Dreamworld',
+    model: 'Flow',
+    fullName: 'Dream Glass Flow',
+    price: 389,
+    originalPrice: 629,
+    currency: 'USD',
+    availability: 'Available',
+    image: '/api/placeholder/400/300',
+    category: 'Gaming',
+    releaseDate: '2022',
+    description: 'Ultra-lightweight AR glasses for gaming and video streaming',
+    keyFeatures: [
+      'Ultra-lightweight (59g)',
+      '120" AR screen',
+      'Wi-Fi 6 connectivity',
+      'Gaming optimization',
+      'Private theater experience'
+    ],
+    specifications: {
+      display: {
+        type: 'AR display',
+        resolution: '1920×1080 per eye',
+        refreshRate: '60Hz',
+        brightness: '500 nits',
+        fov: 'Equivalent to 120" screen',
+        colorAccuracy: 'Good'
+      },
+      design: {
+        weight: '59g',
+        material: 'Ultra-light frame',
+        ipdAdjustment: '0-5 Diopter',
+        dimming: 'Manual'
+      },
+      audio: {
+        speakers: 'Dual private speakers',
+        microphones: 'Built-in',
+        soundLeakage: 'Minimal'
+      },
+      connectivity: {
+        connection: 'Wi-Fi 6 + HDMI',
+        compatibility: ['PlayStation', 'Xbox', 'PC', 'Nintendo Switch', 'Steam Deck']
+      },
+      features: {
+        tracking: 'Basic',
+        chip: 'Gaming processor',
+        latency: 'Low',
+        camera: 'None'
+      }
+    },
+    rating: 4.1,
+    pros: [
+      'Extremely lightweight',
+      'Excellent for gaming',
+      'Wi-Fi 6 connectivity',
+      'Great value for money'
+    ],
+    cons: [
+      'Limited AR features',
+      'Gaming-focused only',
+      'No advanced tracking',
+      'Basic build quality'
+    ],
+    companyInfo: {
+      founded: '2017',
+      headquarters: 'Beijing, China',
+      employees: '120+',
+      marketShare: '3%',
+      description: 'Pioneer in lightweight AR glasses for media consumption'
+    }
+  },
+  {
+    id: 'dreamworld-lead-pro',
+    brand: 'Dreamworld',
+    model: 'Lead Pro',
+    fullName: 'Dream Glass Lead Pro',
+    price: 1199,
+    originalPrice: 1499,
+    currency: 'USD',
+    availability: 'Available',
+    image: '/api/placeholder/400/300',
+    category: 'Professional',
+    releaseDate: '2021',
+    description: 'Advanced AR headset for productivity and immersive experiences',
+    keyFeatures: [
+      '200" AR display',
+      '6 DoF tracking',
+      'Wireless casting',
+      'Professional applications',
+      'Balanced weight design'
+    ],
+    specifications: {
+      display: {
+        type: 'AR display',
+        resolution: '4K support',
+        refreshRate: '90Hz',
+        brightness: '600 nits',
+        fov: '90°',
+        colorAccuracy: 'High'
+      },
+      design: {
+        weight: 'Balanced front-back',
+        material: 'Professional build',
+        ipdAdjustment: 'Adjustable',
+        dimming: 'Adaptive'
+      },
+      audio: {
+        speakers: 'Spatial audio',
+        microphones: 'Array',
+        soundLeakage: 'Minimal'
+      },
+      connectivity: {
+        connection: 'Wireless casting',
+        compatibility: ['Android', 'iPad', 'iPhone', 'Mac', 'PC']
+      },
+      features: {
+        tracking: '6 DoF',
+        chip: 'Professional processor',
+        latency: 'Low',
+        camera: 'RGB camera'
+      }
+    },
+    rating: 4.3,
+    pros: [
+      'Large 200" display',
+      'Professional features',
+      '6 DoF tracking',
+      'Wireless freedom'
+    ],
+    cons: [
+      'High price point',
+      'Complex setup',
+      'Professional focus',
+      'Learning curve'
+    ],
+    companyInfo: {
+      founded: '2017',
+      headquarters: 'Beijing, China',
+      employees: '120+',
+      marketShare: '3%',
+      description: 'Pioneer in lightweight AR glasses for media consumption'
+    }
+  },
+
+  // Even Realities Products
+  {
+    id: 'even-realities-g1',
+    brand: 'Even Realities',
+    model: 'G1',
+    fullName: 'Even Realities G1',
+    price: 599,
+    originalPrice: 599,
+    currency: 'USD',
+    availability: 'Available',
+    image: '/api/placeholder/400/300',
+    category: 'Everyday',
+    releaseDate: '2024',
+    description: 'Everyday smart glasses with AI and micro-LED display',
+    keyFeatures: [
+      'Micro-LED display',
+      'Even AI integration',
+      'Turn-by-turn navigation',
+      'Voice-to-text notes',
+      'Prescription support'
+    ],
+    specifications: {
+      display: {
+        type: 'Micro-LED',
+        resolution: '640×200 per eye',
+        refreshRate: '20Hz',
+        brightness: '1000 nits',
+        fov: '25°',
+        colorAccuracy: 'Green monochrome'
+      },
+      design: {
+        weight: 'Lightweight',
+        material: 'Premium frames',
+        ipdAdjustment: 'Custom fitting',
+        dimming: 'Transparent'
+      },
+      audio: {
+        speakers: 'None (requires earbuds)',
+        microphones: '2 built-in',
+        soundLeakage: 'N/A'
+      },
+      connectivity: {
+        connection: 'Bluetooth 5.2',
+        compatibility: ['iOS', 'Android']
+      },
+      features: {
+        tracking: 'Basic',
+        chip: 'Custom processor',
+        latency: 'Low',
+        camera: 'None'
+      }
+    },
+    rating: 4.4,
+    pros: [
+      'Everyday wearable design',
+      'Excellent AI features',
+      'Great navigation',
+      'Premium build quality'
+    ],
+    cons: [
+      'Monochrome display',
+      'No speakers',
+      'Limited field of view',
+      'High price for features'
+    ],
+    companyInfo: {
+      founded: '2023',
+      headquarters: 'Shenzhen, China',
+      employees: '50+',
+      marketShare: '1%',
+      description: 'Luxury eyewear meets tech for everyday smart glasses'
+    }
+  },
+
+  // Brilliant Labs Products
+  {
+    id: 'brilliant-labs-frame',
+    brand: 'Brilliant Labs',
+    model: 'Frame',
+    fullName: 'Brilliant Labs Frame',
+    price: 349,
+    originalPrice: 349,
+    currency: 'USD',
+    availability: 'Sold Out',
+    image: '/api/placeholder/400/300',
+    category: 'Developer',
+    releaseDate: '2024',
+    description: 'Open-source AI-powered smart glasses for developers and hackers',
+    keyFeatures: [
+      'Open-source platform',
+      'Perplexity AI integration',
+      'Visual analysis',
+      'Live translation',
+      'Developer-friendly'
+    ],
+    specifications: {
+      display: {
+        type: 'Color OLED',
+        resolution: '640×400 per eye',
+        refreshRate: '60Hz',
+        brightness: '500 nits',
+        fov: '20°',
+        colorAccuracy: 'Full color'
+      },
+      design: {
+        weight: '40g',
+        material: 'Lightweight frame',
+        ipdAdjustment: '58-72mm',
+        dimming: 'None'
+      },
+      audio: {
+        speakers: 'None (requires earbuds)',
+        microphones: '1 built-in',
+        soundLeakage: 'N/A'
+      },
+      connectivity: {
+        connection: 'Bluetooth 5.3',
+        compatibility: ['iOS', 'Android']
+      },
+      features: {
+        tracking: '3-axis accelerometer',
+        chip: 'nrf52 + FPGA',
+        latency: 'Low',
+        camera: '720p RGB'
+      }
+    },
+    rating: 4.0,
+    pros: [
+      'Fully open-source',
+      'Great for developers',
+      'AI integration',
+      'Very lightweight'
+    ],
+    cons: [
+      'Developer-focused',
+      'Limited consumer apps',
+      'No speakers',
+      'Small display'
+    ],
+    companyInfo: {
+      founded: '2019',
+      headquarters: 'Hong Kong',
+      employees: '30+',
+      marketShare: '<1%',
+      description: 'Open-source AR platform for developers and creative technologists'
     }
   }
 ];
 
-export const brands = [
-  {
-    id: 'xreal',
-    name: 'Xreal',
-    logo: '/api/placeholder/120/60',
-    description: 'Market leader in AR glasses with 40% market share',
-    founded: '2017',
-    location: 'Beijing',
-    website: 'https://www.xreal.com',
-    products: ['xreal-one-pro', 'xreal-one']
-  },
-  {
-    id: 'rokid',
-    name: 'Rokid',
-    logo: '/api/placeholder/120/60',
-    description: 'Pioneer of AR with focus on spatial computing',
-    founded: '2014',
-    location: 'Hangzhou',
-    website: 'https://global.rokid.com',
-    products: ['rokid-ar-spatial']
-  },
-  {
-    id: 'viture',
-    name: 'Viture',
-    logo: '/api/placeholder/120/60',
-    description: 'XR innovation with AI-powered features',
-    founded: '2021',
-    location: 'Beijing/San Francisco',
-    website: 'https://www.viture.com',
-    products: ['viture-pro-xr']
-  },
-  {
-    id: 'rayneo',
-    name: 'RayNeo',
-    logo: '/api/placeholder/120/60',
-    description: 'TCL-backed consumer XR glasses',
-    founded: '2022',
-    location: 'Shenzhen',
-    website: 'https://www.rayneo.com',
-    products: ['rayneo-air-3s', 'rayneo-x3-pro']
-  }
-];
-
-export const categories = [
-  { id: 'all', name: 'All Products', count: arGlassesData.length },
-  { id: 'budget', name: 'Budget', count: arGlassesData.filter(p => p.category === 'Budget').length },
-  { id: 'mid-range', name: 'Mid-range', count: arGlassesData.filter(p => p.category === 'Mid-range').length },
-  { id: 'premium', name: 'Premium', count: arGlassesData.filter(p => p.category === 'Premium').length }
-];
-
-export const comparisonFeatures = [
-  { key: 'price', label: 'Price', type: 'currency' },
-  { key: 'specifications.display.resolution', label: 'Resolution', type: 'text' },
-  { key: 'specifications.display.brightness', label: 'Brightness', type: 'text' },
-  { key: 'specifications.display.fov', label: 'Field of View', type: 'text' },
-  { key: 'specifications.display.refreshRate', label: 'Refresh Rate', type: 'text' },
-  { key: 'specifications.design.weight', label: 'Weight', type: 'text' },
-  { key: 'specifications.audio.speakers', label: 'Audio', type: 'text' },
-  { key: 'specifications.connectivity.connection', label: 'Connection', type: 'text' },
-  { key: 'specifications.features.tracking', label: 'Tracking', type: 'text' },
-  { key: 'rating', label: 'Rating', type: 'rating' }
-];
+export default arGlassesData;
 
