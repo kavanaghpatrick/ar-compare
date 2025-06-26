@@ -350,67 +350,68 @@ function App() {
               ))}
             </div>
 
-          {selectedProducts.length > 0 && (
-            <div className="comparison-section">
-              <h3>Compare Selected Products ({selectedProducts.length}/3)</h3>
-              <div className="comparison-table">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Specification</th>
-                      {selectedProductsData.map(product => (
-                        <th key={product.id}>{product.fullName}</th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Price</td>
-                      {selectedProductsData.map(product => (
-                        <td key={product.id}>${product.price}</td>
-                      ))}
-                    </tr>
-                    <tr>
-                      <td>Display Type</td>
-                      {selectedProductsData.map(product => (
-                        <td key={product.id}>{product.specifications.display.type}</td>
-                      ))}
-                    </tr>
-                    <tr>
-                      <td>Resolution</td>
-                      {selectedProductsData.map(product => (
-                        <td key={product.id}>{product.specifications.display.resolution}</td>
-                      ))}
-                    </tr>
-                    <tr>
-                      <td>Field of View</td>
-                      {selectedProductsData.map(product => (
-                        <td key={product.id}>{product.specifications.display.fov}</td>
-                      ))}
-                    </tr>
-                    <tr>
-                      <td>Brightness</td>
-                      {selectedProductsData.map(product => (
-                        <td key={product.id}>{product.specifications.display.brightness}</td>
-                      ))}
-                    </tr>
-                    <tr>
-                      <td>Weight</td>
-                      {selectedProductsData.map(product => (
-                        <td key={product.id}>{product.specifications.design.weight}</td>
-                      ))}
-                    </tr>
-                    <tr>
-                      <td>Audio</td>
-                      {selectedProductsData.map(product => (
-                        <td key={product.id}>{product.specifications.audio.speakers}</td>
-                      ))}
-                    </tr>
-                  </tbody>
-                </table>
+            {selectedProducts.length > 0 && (
+              <div className="comparison-section">
+                <h3>Compare Selected Products ({selectedProducts.length}/3)</h3>
+                <div className="comparison-table">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Specification</th>
+                        {selectedProductsData.map(product => (
+                          <th key={product.id}>{product.fullName}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Price</td>
+                        {selectedProductsData.map(product => (
+                          <td key={product.id}>${product.price}</td>
+                        ))}
+                      </tr>
+                      <tr>
+                        <td>Display Type</td>
+                        {selectedProductsData.map(product => (
+                          <td key={product.id}>{product.specifications.display.type}</td>
+                        ))}
+                      </tr>
+                      <tr>
+                        <td>Resolution</td>
+                        {selectedProductsData.map(product => (
+                          <td key={product.id}>{product.specifications.display.resolution}</td>
+                        ))}
+                      </tr>
+                      <tr>
+                        <td>Field of View</td>
+                        {selectedProductsData.map(product => (
+                          <td key={product.id}>{product.specifications.display.fov}</td>
+                        ))}
+                      </tr>
+                      <tr>
+                        <td>Brightness</td>
+                        {selectedProductsData.map(product => (
+                          <td key={product.id}>{product.specifications.display.brightness}</td>
+                        ))}
+                      </tr>
+                      <tr>
+                        <td>Weight</td>
+                        {selectedProductsData.map(product => (
+                          <td key={product.id}>{product.specifications.design.weight}</td>
+                        ))}
+                      </tr>
+                      <tr>
+                        <td>Audio</td>
+                        {selectedProductsData.map(product => (
+                          <td key={product.id}>{product.specifications.audio.speakers}</td>
+                        ))}
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </section>
       </main>
     </div>
