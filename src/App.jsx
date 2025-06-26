@@ -210,28 +210,28 @@ function App() {
   }
 
   return (
-    <div className="app">
+    <div className="app-container">
       <header className="header">
-        <div className="nav">
-          <div className="logo">AR Compare</div>
-          <div className="nav-links">
+        <div className="header-container">
+          <div className="header-title">AR Compare</div>
+          <nav className="nav">
             <a href="#products">Products</a>
             <a href="#brands">Brands</a>
             <a href="#reviews">Reviews</a>
             <a href="#news">News</a>
-          </div>
+          </nav>
         </div>
       </header>
 
-      <main className="main">
+      <main>
         <section className="hero">
-          <div className="hero-content">
-            <h1>The Ultimate AR & AI Glasses Comparison</h1>
-            <p>Compare specs, features, and prices of the latest AR glasses from top manufacturers. Make informed decisions with our comprehensive database.</p>
+          <div className="hero-container">
+            <h1 className="hero-title">The Ultimate AR & AI Glasses Comparison</h1>
+            <p className="hero-subtitle">Compare specs, features, and prices of the latest AR glasses from top manufacturers. Make informed decisions with our comprehensive database.</p>
             
             <div className="hero-buttons">
-              <button className="cta-button">Start Comparing</button>
-              <button className="secondary-button">View All Products</button>
+              <button className="btn btn-primary">Start Comparing</button>
+              <button className="btn btn-outline">View All Products</button>
             </div>
 
             <div className="stats">
@@ -252,9 +252,8 @@ function App() {
         </section>
 
         <section className="products-section">
-          <div className="search-container">
-            <div className="search-box">
-              <Search className="search-icon" size={20} />
+          <div className="products-container">
+            <div className="search-container">
               <input
                 type="text"
                 placeholder="Search AR glasses..."
@@ -263,64 +262,72 @@ function App() {
                 className="search-input"
               />
             </div>
-          </div>
 
-          <div className="products-header">
-            <h2>{filteredProducts.length} Products Found</h2>
-          </div>
+            <h2 className="section-title">{filteredProducts.length} Products Found</h2>
 
-          <div className="products-grid">
-            {filteredProducts.map((product) => (
-              <div key={product.id} className="product-card">
-                <div className="product-image">
-                  <div className="product-badge">{product.category}</div>
-                  <div className="product-icons">
-                    <Eye size={16} />
-                    <Zap size={16} />
+            <div className="products-grid">
+              {filteredProducts.map((product) => (
+                <div key={product.id} className="product-card">
+                  <div className="product-header">
+                    <div className="product-icon">
+                      {product.category === 'Premium' && '⚡'}
+                      {product.category === 'Mid-range' && '⚡'}
+                      {product.category === 'Budget' && '💰'}
+                      {product.category === 'Gaming' && '🎮'}
+                      {product.category === 'Professional' && '💼'}
+                      {product.category === 'Everyday' && '👓'}
+                      {product.category === 'Developer' && '🔧'}
+                      {product.category === 'Specialized' && '🎯'}
+                    </div>
+                    <span style={{fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.6)'}}>{product.category}</span>
                   </div>
-                </div>
-                
-                <div className="product-info">
-                  <h3 className="product-name">{product.fullName}</h3>
+                  
+                  <h3 className="product-title">{product.fullName}</h3>
                   <p className="product-description">{product.description}</p>
                   
                   <div className="product-price">
-                    <span className="price">${product.price}</span>
+                    ${product.price}
                     {product.originalPrice && product.originalPrice !== product.price && (
-                      <span className="original-price">${product.originalPrice}</span>
+                      <span style={{textDecoration: 'line-through', fontSize: '1rem', color: 'rgba(255, 255, 255, 0.5)', marginLeft: '0.5rem'}}>
+                        ${product.originalPrice}
+                      </span>
                     )}
                   </div>
 
-                  <div className="product-rating">
+                  <div className="rating">
                     <div className="stars">
                       {[...Array(5)].map((_, i) => (
-                        <Star
+                        <span
                           key={i}
-                          size={16}
-                          className={i < Math.floor(product.rating) ? 'star-filled' : 'star-empty'}
-                        />
+                          className={`star ${i < Math.floor(product.rating) ? 'star-filled' : 'star-empty'}`}
+                        >
+                          ★
+                        </span>
                       ))}
                     </div>
                     <span className="rating-text">
-                      {product.rating} ({product.specifications?.reviews || 'No reviews yet'})
+                      {product.rating}
+                    </span>
+                    <span className="rating-reviews">
+                      ({product.specifications?.reviews || 'No reviews yet'})
                     </span>
                   </div>
 
-                  <div className="product-specs">
-                    <div className="spec">
-                      <Eye size={16} />
+                  <div className="specs-grid">
+                    <div className="spec-item">
+                      <Eye size={14} />
                       <span>{product.specifications.display.fov}</span>
                     </div>
-                    <div className="spec">
-                      <Zap size={16} />
+                    <div className="spec-item">
+                      <Zap size={14} />
                       <span>{product.specifications.display.brightness}</span>
                     </div>
-                    <div className="spec">
-                      <Volume2 size={16} />
+                    <div className="spec-item">
+                      <Volume2 size={14} />
                       <span>{product.specifications.audio.speakers}</span>
                     </div>
-                    <div className="spec">
-                      <Weight size={16} />
+                    <div className="spec-item">
+                      <Weight size={14} />
                       <span>{product.specifications.design.weight}</span>
                     </div>
                   </div>
@@ -328,21 +335,20 @@ function App() {
                   <div className="product-actions">
                     <button
                       onClick={() => toggleProductSelection(product.id)}
-                      className={`compare-button ${selectedProducts.includes(product.id) ? 'selected' : ''}`}
+                      className={`action-btn action-btn-compare ${selectedProducts.includes(product.id) ? 'selected' : ''}`}
                     >
                       {selectedProducts.includes(product.id) ? '✓ Added' : '+Compare'}
                     </button>
                     <button
                       onClick={() => showProductDetails(product)}
-                      className="details-button"
+                      className="action-btn action-btn-details"
                     >
                       View Details
                     </button>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
 
           {selectedProducts.length > 0 && (
             <div className="comparison-section">
