@@ -265,3 +265,318 @@
   }
 }
 
+
+
+  /* Comparison Page Styles */
+  .comparison-main {
+    @apply py-8 px-4 min-h-screen;
+  }
+
+  .comparison-container {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .comparison-header {
+    @apply mb-8 bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20;
+  }
+
+  .comparison-title-section {
+    @apply mb-6;
+  }
+
+  .comparison-title {
+    @apply text-3xl font-bold text-white mb-2 flex items-center gap-3;
+  }
+
+  .comparison-subtitle {
+    @apply text-white/80 text-lg;
+  }
+
+  .comparison-controls {
+    @apply flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center;
+  }
+
+  .view-toggle {
+    @apply flex bg-white/10 rounded-lg p-1 border border-white/20;
+  }
+
+  .view-btn {
+    @apply px-4 py-2 rounded-md font-medium text-white/80 transition-all flex items-center gap-2 cursor-pointer border-none;
+  }
+
+  .view-btn.active {
+    @apply bg-blue-600 text-white;
+  }
+
+  .view-btn:hover:not(.active) {
+    @apply bg-white/10 text-white;
+  }
+
+  .sort-controls {
+    @apply flex items-center gap-2;
+  }
+
+  .sort-select {
+    @apply px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white focus:outline-none focus:border-blue-500;
+  }
+
+  .sort-order-btn {
+    @apply p-2 bg-white/10 border border-white/20 rounded-lg text-white hover:bg-white/20 transition-all cursor-pointer;
+  }
+
+  /* Grid View Styles */
+  .comparison-grid {
+    @apply grid gap-6 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3;
+  }
+
+  .comparison-card {
+    @apply bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 overflow-hidden;
+  }
+
+  .comparison-card-header {
+    @apply flex justify-between items-center p-4 border-b border-white/20;
+  }
+
+  .remove-btn {
+    @apply p-2 bg-red-500/20 hover:bg-red-500/30 rounded-lg text-red-300 hover:text-red-200 transition-all cursor-pointer border-none;
+  }
+
+  .product-category-badge {
+    @apply px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm font-medium;
+  }
+
+  .comparison-card-content {
+    @apply p-6;
+  }
+
+  .comparison-product-title {
+    @apply text-xl font-bold text-white mb-2;
+  }
+
+  .comparison-price {
+    @apply text-2xl font-bold text-blue-400 mb-4;
+  }
+
+  .comparison-rating {
+    @apply flex items-center gap-2 mb-6;
+  }
+
+  .rating-value {
+    @apply text-white font-semibold;
+  }
+
+  .comparison-specs {
+    @apply space-y-4 mb-6;
+  }
+
+  .spec-group {
+    @apply bg-white/5 rounded-lg p-4;
+  }
+
+  .spec-group h4 {
+    @apply text-white font-semibold mb-3 text-sm uppercase tracking-wide;
+  }
+
+  .spec-row {
+    @apply flex justify-between items-center py-1;
+  }
+
+  .spec-label {
+    @apply text-white/70 text-sm;
+  }
+
+  .spec-value {
+    @apply text-white font-medium text-sm;
+  }
+
+  .comparison-pros-cons {
+    @apply grid grid-cols-1 sm:grid-cols-2 gap-4;
+  }
+
+  .pros-section, .cons-section {
+    @apply bg-white/5 rounded-lg p-4;
+  }
+
+  .pros-title {
+    @apply flex items-center gap-2 text-green-400 font-semibold mb-3 text-sm;
+  }
+
+  .cons-title {
+    @apply flex items-center gap-2 text-red-400 font-semibold mb-3 text-sm;
+  }
+
+  .pros-list, .cons-list {
+    @apply space-y-1;
+  }
+
+  .pros-list li, .cons-list li {
+    @apply text-white/80 text-sm;
+  }
+
+  /* Table View Styles */
+  .comparison-table-container {
+    @apply bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 overflow-hidden;
+  }
+
+  .comparison-table-scroll {
+    @apply overflow-x-auto;
+  }
+
+  .comparison-table {
+    @apply w-full border-collapse;
+  }
+
+  .spec-header {
+    @apply bg-white/20 text-white font-bold p-4 text-left sticky left-0 z-10;
+  }
+
+  .product-header {
+    @apply bg-white/10 text-white p-4 min-w-48;
+  }
+
+  .product-header-content {
+    @apply flex flex-col gap-2;
+  }
+
+  .remove-btn-small {
+    @apply self-end p-1 bg-red-500/20 hover:bg-red-500/30 rounded text-red-300 hover:text-red-200 transition-all cursor-pointer border-none;
+  }
+
+  .product-info {
+    @apply text-center;
+  }
+
+  .product-name {
+    @apply font-semibold text-sm;
+  }
+
+  .product-price {
+    @apply text-blue-400 font-bold;
+  }
+
+  .spec-name {
+    @apply bg-white/5 text-white/90 font-medium p-4 sticky left-0 z-10;
+  }
+
+  .spec-value-cell {
+    @apply text-white/80 p-4 text-center;
+  }
+
+  .rating-cell {
+    @apply flex flex-col items-center gap-1;
+  }
+
+  .rating-number {
+    @apply font-bold text-white;
+  }
+
+  .stars-small {
+    @apply flex;
+  }
+
+  .star-small {
+    @apply text-xs;
+  }
+
+  .star-small.filled {
+    @apply text-yellow-400;
+  }
+
+  .star-small.empty {
+    @apply text-gray-600;
+  }
+
+  .category-badge {
+    @apply px-2 py-1 bg-blue-500/20 text-blue-300 rounded text-xs;
+  }
+
+  .highlight-value {
+    @apply font-bold text-blue-400;
+  }
+
+  /* Main Page Comparison Section Updates */
+  .comparison-header-inline {
+    @apply flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6;
+  }
+
+  .comparison-btn {
+    @apply flex items-center gap-2;
+  }
+
+  .comparison-btn:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  .selected-products-preview {
+    @apply flex flex-wrap gap-3 mb-6;
+  }
+
+  .selected-product-chip {
+    @apply bg-white/10 backdrop-blur-md rounded-lg px-4 py-2 border border-white/20 flex items-center gap-3;
+  }
+
+  .selected-product-chip .product-name {
+    @apply text-white font-medium text-sm;
+  }
+
+  .selected-product-chip .product-price {
+    @apply text-blue-400 font-bold text-sm;
+  }
+
+  .remove-chip-btn {
+    @apply p-1 bg-red-500/20 hover:bg-red-500/30 rounded text-red-300 hover:text-red-200 transition-all cursor-pointer border-none;
+  }
+
+  .quick-comparison {
+    @apply mt-6;
+  }
+
+  .quick-comparison h4 {
+    @apply text-white font-semibold mb-4;
+  }
+
+  /* Responsive Design for Comparison */
+  @media (max-width: 768px) {
+    .comparison-grid {
+      @apply grid-cols-1;
+    }
+    
+    .comparison-controls {
+      @apply flex-col items-stretch;
+    }
+    
+    .view-toggle {
+      @apply w-full;
+    }
+    
+    .comparison-pros-cons {
+      @apply grid-cols-1;
+    }
+    
+    .comparison-header-inline {
+      @apply flex-col items-stretch;
+    }
+    
+    .selected-products-preview {
+      @apply flex-col;
+    }
+    
+    .selected-product-chip {
+      @apply justify-between;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .comparison-card-content {
+      @apply p-4;
+    }
+    
+    .comparison-title {
+      @apply text-2xl;
+    }
+    
+    .spec-group {
+      @apply p-3;
+    }
+  }
+

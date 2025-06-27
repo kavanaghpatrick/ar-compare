@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Search, Star, Eye, Zap, Volume2, Weight, Smartphone, Cpu, ArrowLeft } from 'lucide-react'
+import { Search, Star, Eye, Zap, Volume2, Weight, Smartphone, Cpu, ArrowLeft, Grid3X3, BarChart3, Filter, SortAsc, SortDesc, X, Check, Minus } from 'lucide-react'
 import { arGlassesData } from './data/products.js'
 
 function App() {
@@ -7,6 +7,11 @@ function App() {
   const [selectedProducts, setSelectedProducts] = useState([])
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [activeTab, setActiveTab] = useState('specs')
+  const [showComparison, setShowComparison] = useState(false)
+  const [comparisonView, setComparisonView] = useState('grid') // 'grid' or 'table'
+  const [sortBy, setSortBy] = useState('price')
+  const [sortOrder, setSortOrder] = useState('asc')
+  const [filterCategory, setFilterCategory] = useState('all')
 
   // Use the comprehensive product database
   const products = arGlassesData
@@ -21,7 +26,7 @@ function App() {
     setSelectedProducts(prev => {
       if (prev.includes(productId)) {
         return prev.filter(id => id !== productId)
-      } else if (prev.length < 3) {
+      } else if (prev.length < 6) { // Allow up to 6 products for comparison
         return [...prev, productId]
       }
       return prev
@@ -37,7 +42,56 @@ function App() {
     setActiveTab('specs')
   }
 
+  const openComparison = () => {
+    setShowComparison(true)
+  }
+
+  const closeComparison = () => {
+    setShowComparison(false)
+  }
+
+  const removeFromComparison = (productId) => {
+    setSelectedProducts(prev => prev.filter(id => id !== productId))
+  }
+
   const selectedProductsData = products.filter(p => selectedProducts.includes(p.id))
+
+  // Sort selected products for comparison
+  const sortedSelectedProducts = [...selectedProductsData].sort((a, b) => {
+    let aValue, bValue
+    
+    switch (sortBy) {
+      case 'price':
+        aValue = a.price
+        bValue = b.price
+        break
+      case 'rating':
+        aValue = a.rating
+        bValue = b.rating
+        break
+      case 'brand':
+        aValue = a.brand
+        bValue = b.brand
+        break
+      case 'fov':
+        aValue = parseInt(a.specifications.display.fov) || 0
+        bValue = parseInt(b.specifications.display.fov) || 0
+        break
+      case 'weight':
+        aValue = parseInt(a.specifications.design.weight) || 0
+        bValue = parseInt(b.specifications.design.weight) || 0
+        break
+      default:
+        aValue = a.price
+        bValue = b.price
+    }
+    
+    if (sortOrder === 'asc') {
+      return aValue > bValue ? 1 : -1
+    } else {
+      return aValue < bValue ? 1 : -1
+    }
+  })
 
   if (selectedProduct) {
     return (
@@ -209,6 +263,330 @@ function App() {
     )
   }
 
+  // Comparison Page View
+  if (showComparison && selectedProducts.length > 0) {
+    return (
+      <div className="app-container">
+        <header className="header">
+          <div className="header-container">
+            <div className="header-title">AR Compare - Comparison</div>
+            <nav className="nav">
+              <button onClick={closeComparison} className="btn btn-outline">
+                <ArrowLeft size={16} />
+                Back to Products
+              </button>
+            </nav>
+          </div>
+        </header>
+
+        <main className="comparison-main">
+          <div className="comparison-container">
+            {/* Comparison Header */}
+            <div className="comparison-header">
+              <div className="comparison-title-section">
+                <h1 className="comparison-title">
+                  <BarChart3 size={32} />
+                  Compare AR Glasses
+                </h1>
+                <p className="comparison-subtitle">
+                  Comparing {selectedProducts.length} AR glasses side-by-side
+                </p>
+              </div>
+
+              {/* Controls */}
+              <div className="comparison-controls">
+                <div className="view-toggle">
+                  <button
+                    onClick={() => setComparisonView('grid')}
+                    className={`view-btn ${comparisonView === 'grid' ? 'active' : ''}`}
+                  >
+                    <Grid3X3 size={16} />
+                    Grid View
+                  </button>
+                  <button
+                    onClick={() => setComparisonView('table')}
+                    className={`view-btn ${comparisonView === 'table' ? 'active' : ''}`}
+                  >
+                    <BarChart3 size={16} />
+                    Table View
+                  </button>
+                </div>
+
+                <div className="sort-controls">
+                  <select
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value)}
+                    className="sort-select"
+                  >
+                    <option value="price">Sort by Price</option>
+                    <option value="rating">Sort by Rating</option>
+                    <option value="brand">Sort by Brand</option>
+                    <option value="fov">Sort by Field of View</option>
+                    <option value="weight">Sort by Weight</option>
+                  </select>
+                  <button
+                    onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
+                    className="sort-order-btn"
+                  >
+                    {sortOrder === 'asc' ? <SortAsc size={16} /> : <SortDesc size={16} />}
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Grid View */}
+            {comparisonView === 'grid' && (
+              <div className="comparison-grid">
+                {sortedSelectedProducts.map((product) => (
+                  <div key={product.id} className="comparison-card">
+                    <div className="comparison-card-header">
+                      <button
+                        onClick={() => removeFromComparison(product.id)}
+                        className="remove-btn"
+                      >
+                        <X size={16} />
+                      </button>
+                      <div className="product-category-badge">{product.category}</div>
+                    </div>
+
+                    <div className="comparison-card-content">
+                      <h3 className="comparison-product-title">{product.fullName}</h3>
+                      <div className="comparison-price">${product.price}</div>
+                      
+                      <div className="comparison-rating">
+                        <div className="stars">
+                          {[...Array(5)].map((_, i) => (
+                            <span
+                              key={i}
+                              className={`star ${i < Math.floor(product.rating) ? 'star-filled' : 'star-empty'}`}
+                            >
+                              ★
+                            </span>
+                          ))}
+                        </div>
+                        <span className="rating-value">{product.rating}</span>
+                      </div>
+
+                      {/* Key Specs Grid */}
+                      <div className="comparison-specs">
+                        <div className="spec-group">
+                          <h4>Display</h4>
+                          <div className="spec-row">
+                            <span className="spec-label">Type:</span>
+                            <span className="spec-value">{product.specifications.display.type}</span>
+                          </div>
+                          <div className="spec-row">
+                            <span className="spec-label">Resolution:</span>
+                            <span className="spec-value">{product.specifications.display.resolution}</span>
+                          </div>
+                          <div className="spec-row">
+                            <span className="spec-label">FOV:</span>
+                            <span className="spec-value">{product.specifications.display.fov}</span>
+                          </div>
+                          <div className="spec-row">
+                            <span className="spec-label">Brightness:</span>
+                            <span className="spec-value">{product.specifications.display.brightness}</span>
+                          </div>
+                        </div>
+
+                        <div className="spec-group">
+                          <h4>Design</h4>
+                          <div className="spec-row">
+                            <span className="spec-label">Weight:</span>
+                            <span className="spec-value">{product.specifications.design.weight}</span>
+                          </div>
+                          <div className="spec-row">
+                            <span className="spec-label">Material:</span>
+                            <span className="spec-value">{product.specifications.design.material}</span>
+                          </div>
+                        </div>
+
+                        <div className="spec-group">
+                          <h4>Audio</h4>
+                          <div className="spec-row">
+                            <span className="spec-label">Speakers:</span>
+                            <span className="spec-value">{product.specifications.audio.speakers}</span>
+                          </div>
+                        </div>
+
+                        <div className="spec-group">
+                          <h4>Connectivity</h4>
+                          <div className="spec-row">
+                            <span className="spec-label">Connection:</span>
+                            <span className="spec-value">{product.specifications.connectivity.connection}</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Pros and Cons */}
+                      <div className="comparison-pros-cons">
+                        <div className="pros-section">
+                          <h4 className="pros-title">
+                            <Check size={16} />
+                            Pros
+                          </h4>
+                          <ul className="pros-list">
+                            {product.pros.slice(0, 3).map((pro, index) => (
+                              <li key={index}>{pro}</li>
+                            ))}
+                          </ul>
+                        </div>
+                        <div className="cons-section">
+                          <h4 className="cons-title">
+                            <Minus size={16} />
+                            Cons
+                          </h4>
+                          <ul className="cons-list">
+                            {product.cons.slice(0, 3).map((con, index) => (
+                              <li key={index}>{con}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Table View */}
+            {comparisonView === 'table' && (
+              <div className="comparison-table-container">
+                <div className="comparison-table-scroll">
+                  <table className="comparison-table">
+                    <thead>
+                      <tr>
+                        <th className="spec-header">Specification</th>
+                        {sortedSelectedProducts.map(product => (
+                          <th key={product.id} className="product-header">
+                            <div className="product-header-content">
+                              <button
+                                onClick={() => removeFromComparison(product.id)}
+                                className="remove-btn-small"
+                              >
+                                <X size={14} />
+                              </button>
+                              <div className="product-info">
+                                <div className="product-name">{product.fullName}</div>
+                                <div className="product-price">${product.price}</div>
+                              </div>
+                            </div>
+                          </th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td className="spec-name">Rating</td>
+                        {sortedSelectedProducts.map(product => (
+                          <td key={product.id} className="spec-value-cell">
+                            <div className="rating-cell">
+                              <span className="rating-number">{product.rating}</span>
+                              <div className="stars-small">
+                                {[...Array(5)].map((_, i) => (
+                                  <span
+                                    key={i}
+                                    className={`star-small ${i < Math.floor(product.rating) ? 'filled' : 'empty'}`}
+                                  >
+                                    ★
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          </td>
+                        ))}
+                      </tr>
+                      <tr>
+                        <td className="spec-name">Category</td>
+                        {sortedSelectedProducts.map(product => (
+                          <td key={product.id} className="spec-value-cell">
+                            <span className="category-badge">{product.category}</span>
+                          </td>
+                        ))}
+                      </tr>
+                      <tr>
+                        <td className="spec-name">Display Type</td>
+                        {sortedSelectedProducts.map(product => (
+                          <td key={product.id} className="spec-value-cell">
+                            {product.specifications.display.type}
+                          </td>
+                        ))}
+                      </tr>
+                      <tr>
+                        <td className="spec-name">Resolution</td>
+                        {sortedSelectedProducts.map(product => (
+                          <td key={product.id} className="spec-value-cell">
+                            {product.specifications.display.resolution}
+                          </td>
+                        ))}
+                      </tr>
+                      <tr>
+                        <td className="spec-name">Field of View</td>
+                        {sortedSelectedProducts.map(product => (
+                          <td key={product.id} className="spec-value-cell">
+                            <span className="highlight-value">{product.specifications.display.fov}</span>
+                          </td>
+                        ))}
+                      </tr>
+                      <tr>
+                        <td className="spec-name">Brightness</td>
+                        {sortedSelectedProducts.map(product => (
+                          <td key={product.id} className="spec-value-cell">
+                            {product.specifications.display.brightness}
+                          </td>
+                        ))}
+                      </tr>
+                      <tr>
+                        <td className="spec-name">Refresh Rate</td>
+                        {sortedSelectedProducts.map(product => (
+                          <td key={product.id} className="spec-value-cell">
+                            {product.specifications.display.refreshRate}
+                          </td>
+                        ))}
+                      </tr>
+                      <tr>
+                        <td className="spec-name">Weight</td>
+                        {sortedSelectedProducts.map(product => (
+                          <td key={product.id} className="spec-value-cell">
+                            <span className="highlight-value">{product.specifications.design.weight}</span>
+                          </td>
+                        ))}
+                      </tr>
+                      <tr>
+                        <td className="spec-name">Material</td>
+                        {sortedSelectedProducts.map(product => (
+                          <td key={product.id} className="spec-value-cell">
+                            {product.specifications.design.material}
+                          </td>
+                        ))}
+                      </tr>
+                      <tr>
+                        <td className="spec-name">Audio</td>
+                        {sortedSelectedProducts.map(product => (
+                          <td key={product.id} className="spec-value-cell">
+                            {product.specifications.audio.speakers}
+                          </td>
+                        ))}
+                      </tr>
+                      <tr>
+                        <td className="spec-name">Connection</td>
+                        {sortedSelectedProducts.map(product => (
+                          <td key={product.id} className="spec-value-cell">
+                            {product.specifications.connectivity.connection}
+                          </td>
+                        ))}
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            )}
+          </div>
+        </main>
+      </div>
+    )
+  }
+
   return (
     <div className="app-container">
       <header className="header">
@@ -352,63 +730,77 @@ function App() {
 
             {selectedProducts.length > 0 && (
               <div className="comparison-section">
-                <h3>Compare Selected Products ({selectedProducts.length}/3)</h3>
-                <div className="comparison-table">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Specification</th>
-                        {selectedProductsData.map(product => (
-                          <th key={product.id}>{product.fullName}</th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Price</td>
-                        {selectedProductsData.map(product => (
-                          <td key={product.id}>${product.price}</td>
-                        ))}
-                      </tr>
-                      <tr>
-                        <td>Display Type</td>
-                        {selectedProductsData.map(product => (
-                          <td key={product.id}>{product.specifications.display.type}</td>
-                        ))}
-                      </tr>
-                      <tr>
-                        <td>Resolution</td>
-                        {selectedProductsData.map(product => (
-                          <td key={product.id}>{product.specifications.display.resolution}</td>
-                        ))}
-                      </tr>
-                      <tr>
-                        <td>Field of View</td>
-                        {selectedProductsData.map(product => (
-                          <td key={product.id}>{product.specifications.display.fov}</td>
-                        ))}
-                      </tr>
-                      <tr>
-                        <td>Brightness</td>
-                        {selectedProductsData.map(product => (
-                          <td key={product.id}>{product.specifications.display.brightness}</td>
-                        ))}
-                      </tr>
-                      <tr>
-                        <td>Weight</td>
-                        {selectedProductsData.map(product => (
-                          <td key={product.id}>{product.specifications.design.weight}</td>
-                        ))}
-                      </tr>
-                      <tr>
-                        <td>Audio</td>
-                        {selectedProductsData.map(product => (
-                          <td key={product.id}>{product.specifications.audio.speakers}</td>
-                        ))}
-                      </tr>
-                    </tbody>
-                  </table>
+                <div className="comparison-header-inline">
+                  <h3>Selected for Comparison ({selectedProducts.length}/6)</h3>
+                  <button
+                    onClick={openComparison}
+                    className="btn btn-primary comparison-btn"
+                    disabled={selectedProducts.length < 2}
+                  >
+                    <BarChart3 size={16} />
+                    {selectedProducts.length < 2 ? 'Select 2+ to Compare' : `Compare ${selectedProducts.length} Products`}
+                  </button>
                 </div>
+                
+                <div className="selected-products-preview">
+                  {selectedProductsData.map(product => (
+                    <div key={product.id} className="selected-product-chip">
+                      <span className="product-name">{product.fullName}</span>
+                      <span className="product-price">${product.price}</span>
+                      <button
+                        onClick={() => removeFromComparison(product.id)}
+                        className="remove-chip-btn"
+                      >
+                        <X size={14} />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Quick comparison table for 2-3 products */}
+                {selectedProducts.length >= 2 && selectedProducts.length <= 3 && (
+                  <div className="quick-comparison">
+                    <h4>Quick Comparison</h4>
+                    <div className="comparison-table">
+                      <table>
+                        <thead>
+                          <tr>
+                            <th>Specification</th>
+                            {selectedProductsData.map(product => (
+                              <th key={product.id}>{product.fullName}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Price</td>
+                            {selectedProductsData.map(product => (
+                              <td key={product.id}>${product.price}</td>
+                            ))}
+                          </tr>
+                          <tr>
+                            <td>Rating</td>
+                            {selectedProductsData.map(product => (
+                              <td key={product.id}>{product.rating} ⭐</td>
+                            ))}
+                          </tr>
+                          <tr>
+                            <td>Field of View</td>
+                            {selectedProductsData.map(product => (
+                              <td key={product.id}>{product.specifications.display.fov}</td>
+                            ))}
+                          </tr>
+                          <tr>
+                            <td>Weight</td>
+                            {selectedProductsData.map(product => (
+                              <td key={product.id}>{product.specifications.design.weight}</td>
+                            ))}
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                )}
               </div>
             )}
           </div>
