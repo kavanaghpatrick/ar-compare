@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Search, Star, Eye, Zap, Volume2, Weight, Smartphone, Cpu, ArrowLeft, Grid3X3, BarChart3, Filter, SortAsc, SortDesc, X, Check, Minus } from 'lucide-react'
+import { Search, Star, Eye, Zap, Volume2, Weight, Smartphone, Cpu, ArrowLeft, Grid3X3, BarChart3, Filter, SortAsc, SortDesc, X, Check, Minus, ShoppingCart, Plus } from 'lucide-react'
 import { arGlassesData } from './data/products.js'
 
 function App() {
@@ -7,11 +7,12 @@ function App() {
   const [selectedProducts, setSelectedProducts] = useState([])
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [activeTab, setActiveTab] = useState('specs')
-  const [showComparison, setShowComparison] = useState(false)
+  const [currentView, setCurrentView] = useState('main') // 'main', 'comparison', 'details'
   const [comparisonView, setComparisonView] = useState('grid') // 'grid' or 'table'
   const [sortBy, setSortBy] = useState('price')
   const [sortOrder, setSortOrder] = useState('asc')
   const [filterCategory, setFilterCategory] = useState('all')
+  const [showCart, setShowCart] = useState(false)
 
   // Use the comprehensive product database
   const products = arGlassesData
@@ -33,25 +34,27 @@ function App() {
     })
   }
 
-  const showProductDetails = (product) => {
-    setSelectedProduct(product)
-  }
-
-  const closeProductDetails = () => {
-    setSelectedProduct(null)
-    setActiveTab('specs')
-  }
-
-  const openComparison = () => {
-    setShowComparison(true)
-  }
-
-  const closeComparison = () => {
-    setShowComparison(false)
-  }
-
   const removeFromComparison = (productId) => {
     setSelectedProducts(prev => prev.filter(id => id !== productId))
+  }
+
+  const clearComparison = () => {
+    setSelectedProducts([])
+  }
+
+  const showProductDetails = (product) => {
+    setSelectedProduct(product)
+    setCurrentView('details')
+  }
+
+  const goToComparison = () => {
+    setCurrentView('comparison')
+  }
+
+  const goToMain = () => {
+    setCurrentView('main')
+    setSelectedProduct(null)
+    setActiveTab('specs')
   }
 
   const selectedProductsData = products.filter(p => selectedProducts.includes(p.id))
@@ -93,46 +96,110 @@ function App() {
     }
   })
 
-  if (selectedProduct) {
+  // Floating Comparison Cart Component
+  const ComparisonCart = () => {
+    if (selectedProducts.length === 0) return null
+
     return (
-      <div className="product-details">
-        <div className="product-details-header">
-          <button onClick={closeProductDetails} className="back-button">
-            <ArrowLeft size={20} />
-            Back to Products
-          </button>
-          <h1>{selectedProduct.fullName}</h1>
-          <p className="product-price">${selectedProduct.price}</p>
-        </div>
-
-        <div className="product-tabs">
+      <div className="comparison-cart">
+        <div className="cart-header">
+          <div className="cart-title">
+            <ShoppingCart className="cart-icon" />
+            <span>Compare ({selectedProducts.length}/6)</span>
+          </div>
           <button 
-            className={`tab ${activeTab === 'specs' ? 'active' : ''}`}
-            onClick={() => setActiveTab('specs')}
+            className="cart-toggle"
+            onClick={() => setShowCart(!showCart)}
           >
-            Specifications
-          </button>
-          <button 
-            className={`tab ${activeTab === 'features' ? 'active' : ''}`}
-            onClick={() => setActiveTab('features')}
-          >
-            Features
-          </button>
-          <button 
-            className={`tab ${activeTab === 'pros-cons' ? 'active' : ''}`}
-            onClick={() => setActiveTab('pros-cons')}
-          >
-            Pros & Cons
-          </button>
-          <button 
-            className={`tab ${activeTab === 'company' ? 'active' : ''}`}
-            onClick={() => setActiveTab('company')}
-          >
-            Company Info
+            {showCart ? <Minus /> : <Plus />}
           </button>
         </div>
+        
+        {showCart && (
+          <div className="cart-content">
+            <div className="cart-products">
+              {selectedProductsData.map(product => (
+                <div key={product.id} className="cart-product">
+                  <div className="cart-product-info">
+                    <span className="cart-product-name">{product.shortName}</span>
+                    <span className="cart-product-price">${product.price}</span>
+                  </div>
+                  <button 
+                    className="cart-remove"
+                    onClick={() => removeFromComparison(product.id)}
+                  >
+                    <X />
+                  </button>
+                </div>
+              ))}
+            </div>
+            
+            <div className="cart-actions">
+              {selectedProducts.length >= 2 && (
+                <button 
+                  className="cart-compare-btn"
+                  onClick={goToComparison}
+                >
+                  <BarChart3 />
+                  Compare {selectedProducts.length} Products
+                </button>
+              )}
+              <button 
+                className="cart-clear-btn"
+                onClick={clearComparison}
+              >
+                Clear All
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    )
+  }
 
-        <div className="product-content">
+  // Product Details View
+  if (currentView === 'details' && selectedProduct) {
+    return (
+      <div className="app-container">
+        <ComparisonCart />
+        <div className="product-details">
+          <div className="product-details-header">
+            <button onClick={goToMain} className="back-button">
+              <ArrowLeft size={20} />
+              Back to Products
+            </button>
+            <h1>{selectedProduct.fullName}</h1>
+            <p className="product-price">${selectedProduct.price}</p>
+          </div>
+
+          <div className="product-tabs">
+            <button 
+              className={`tab ${activeTab === 'specs' ? 'active' : ''}`}
+              onClick={() => setActiveTab('specs')}
+            >
+              Specifications
+            </button>
+            <button 
+              className={`tab ${activeTab === 'features' ? 'active' : ''}`}
+              onClick={() => setActiveTab('features')}
+            >
+              Features
+            </button>
+            <button 
+              className={`tab ${activeTab === 'pros-cons' ? 'active' : ''}`}
+              onClick={() => setActiveTab('pros-cons')}
+            >
+              Pros & Cons
+            </button>
+            <button 
+              className={`tab ${activeTab === 'company' ? 'active' : ''}`}
+              onClick={() => setActiveTab('company')}
+            >
+              Company Info
+            </button>
+          </div>
+
+          <div className="product-content">
           {activeTab === 'specs' && (
             <div className="specs-grid">
               <div className="spec-section">
@@ -259,19 +326,21 @@ function App() {
             </div>
           )}
         </div>
+        </div>
       </div>
     )
   }
 
   // Comparison Page View
-  if (showComparison && selectedProducts.length > 0) {
+  if (currentView === 'comparison' && selectedProducts.length > 0) {
     return (
       <div className="app-container">
+        <ComparisonCart />
         <header className="header">
           <div className="header-container">
             <div className="header-title">AR Compare - Comparison</div>
             <nav className="nav">
-              <button onClick={closeComparison} className="btn btn-outline">
+              <button onClick={goToMain} className="btn btn-outline">
                 <ArrowLeft size={16} />
                 Back to Products
               </button>
@@ -587,8 +656,10 @@ function App() {
     )
   }
 
+  // Main View
   return (
     <div className="app-container">
+      <ComparisonCart />
       <header className="header">
         <div className="header-container">
           <div className="header-title">AR Compare</div>
@@ -727,82 +798,6 @@ function App() {
                 </div>
               ))}
             </div>
-
-            {selectedProducts.length > 0 && (
-              <div className="comparison-section">
-                <div className="comparison-header-inline">
-                  <h3>Selected for Comparison ({selectedProducts.length}/6)</h3>
-                  <button
-                    onClick={openComparison}
-                    className="btn btn-primary comparison-btn"
-                    disabled={selectedProducts.length < 2}
-                  >
-                    <BarChart3 size={16} />
-                    {selectedProducts.length < 2 ? 'Select 2+ to Compare' : `Compare ${selectedProducts.length} Products`}
-                  </button>
-                </div>
-                
-                <div className="selected-products-preview">
-                  {selectedProductsData.map(product => (
-                    <div key={product.id} className="selected-product-chip">
-                      <span className="product-name">{product.fullName}</span>
-                      <span className="product-price">${product.price}</span>
-                      <button
-                        onClick={() => removeFromComparison(product.id)}
-                        className="remove-chip-btn"
-                      >
-                        <X size={14} />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Quick comparison table for 2-3 products */}
-                {selectedProducts.length >= 2 && selectedProducts.length <= 3 && (
-                  <div className="quick-comparison">
-                    <h4>Quick Comparison</h4>
-                    <div className="comparison-table">
-                      <table>
-                        <thead>
-                          <tr>
-                            <th>Specification</th>
-                            {selectedProductsData.map(product => (
-                              <th key={product.id}>{product.fullName}</th>
-                            ))}
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>Price</td>
-                            {selectedProductsData.map(product => (
-                              <td key={product.id}>${product.price}</td>
-                            ))}
-                          </tr>
-                          <tr>
-                            <td>Rating</td>
-                            {selectedProductsData.map(product => (
-                              <td key={product.id}>{product.rating} ⭐</td>
-                            ))}
-                          </tr>
-                          <tr>
-                            <td>Field of View</td>
-                            {selectedProductsData.map(product => (
-                              <td key={product.id}>{product.specifications.display.fov}</td>
-                            ))}
-                          </tr>
-                          <tr>
-                            <td>Weight</td>
-                            {selectedProductsData.map(product => (
-                              <td key={product.id}>{product.specifications.design.weight}</td>
-                            ))}
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                )}
-              </div>
-            )}
           </div>
         </section>
       </main>

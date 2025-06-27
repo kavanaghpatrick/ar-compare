@@ -580,3 +580,132 @@
     }
   }
 
+
+/* Floating Comparison Cart Styles */
+.comparison-cart {
+  @apply fixed bottom-6 right-6 z-50 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl shadow-2xl;
+  min-width: 320px;
+  max-width: 400px;
+}
+
+.cart-header {
+  @apply flex items-center justify-between p-4 border-b border-white/10;
+}
+
+.cart-title {
+  @apply flex items-center gap-2 text-white font-semibold;
+}
+
+.cart-icon {
+  @apply w-5 h-5 text-blue-400;
+}
+
+.cart-toggle {
+  @apply p-2 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-all duration-200;
+}
+
+.cart-content {
+  @apply p-4;
+}
+
+.cart-products {
+  @apply space-y-3 mb-4;
+}
+
+.cart-product {
+  @apply flex items-center justify-between p-3 bg-white/5 rounded-lg border border-white/10;
+}
+
+.cart-product-info {
+  @apply flex flex-col;
+}
+
+.cart-product-name {
+  @apply text-white font-medium text-sm;
+}
+
+.cart-product-price {
+  @apply text-blue-400 text-sm font-semibold;
+}
+
+.cart-remove {
+  @apply p-1 rounded-md bg-red-500/20 hover:bg-red-500/30 text-red-400 transition-all duration-200;
+}
+
+.cart-actions {
+  @apply space-y-2;
+}
+
+.cart-compare-btn {
+  @apply w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold rounded-lg transition-all duration-200 shadow-lg;
+}
+
+.cart-clear-btn {
+  @apply w-full px-4 py-2 bg-white/10 hover:bg-white/20 text-white/80 hover:text-white font-medium rounded-lg transition-all duration-200;
+}
+
+/* Cart animations */
+.comparison-cart {
+  animation: slideInFromRight 0.3s ease-out;
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Mobile responsive cart */
+@media (max-width: 768px) {
+  .comparison-cart {
+    @apply bottom-4 right-4 left-4;
+    min-width: auto;
+    max-width: none;
+  }
+  
+  .cart-header {
+    @apply p-3;
+  }
+  
+  .cart-content {
+    @apply p-3;
+  }
+  
+  .cart-product {
+    @apply p-2;
+  }
+  
+  .cart-product-name {
+    @apply text-xs;
+  }
+  
+  .cart-product-price {
+    @apply text-xs;
+  }
+}
+
+/* Enhanced button styles for better cart integration */
+.action-btn-compare.selected {
+  @apply bg-green-600 hover:bg-green-700 text-white;
+}
+
+.action-btn-compare.selected::before {
+  content: "✓ ";
+}
+
+/* Cart notification badge */
+.cart-title::after {
+  content: "";
+  @apply absolute -top-1 -right-1 w-2 h-2 bg-red-500 rounded-full;
+  display: none;
+}
+
+.cart-title.has-items::after {
+  display: block;
+}
+
